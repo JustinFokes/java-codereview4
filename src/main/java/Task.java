@@ -5,14 +5,20 @@ public class Task {
   private int id;
   private String description;
   private int categoryId;
+  private String dueDate;
 
-  public Task(String description, int categoryId) {
+  public Task(String description, int categoryId, String dueDate) {
     this.description = description;
     this.categoryId = categoryId;
+    this.dueDate = dueDate;
   }
 
   public String getDescription() {
     return description;
+  }
+
+  public String getDueDate(){
+    return dueDate;
   }
 
   public int getId() {
@@ -44,10 +50,11 @@ public class Task {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO tasks(description, categoryId) VALUES (:description, :categoryId)";
+      String sql = "INSERT INTO tasks(description, categoryId, dueDate) VALUES (:description, :categoryId, :dueDate)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("description", this.description)
         .addParameter("categoryId", this.categoryId)
+        .addParameter("dueDate", this.dueDate)
         .executeUpdate()
         .getKey();
     }

@@ -56,8 +56,9 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int catId = Integer.parseInt(request.queryParams("categoryId"));
       Category category = Category.find(catId);
+      String taskDueDate = request.queryParams("dueDate");
       String description = request.queryParams("description");
-      Task newTask = new Task(description, catId);
+      Task newTask = new Task(description, catId, taskDueDate);
       newTask.save();
 
       model.put("category", category);
@@ -68,6 +69,7 @@ public class App {
 
     get("tasks/new", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
+
       model.put("template", "templates/task-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
