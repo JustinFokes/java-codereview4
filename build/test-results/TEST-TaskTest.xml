@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TaskTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-02T20:19:08" hostname="epicodus-67.local" time="0.189">
+<testsuite name="TaskTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-05-03T16:01:26" hostname="epicodus-117.local" time="0.08">
   <properties/>
-  <testcase name="equals_returnsTrueIfDescriptionsAretheSame" classname="TaskTest" time="0.093"/>
-  <testcase name="save_returnsTrueIfDescriptionsAretheSame" classname="TaskTest" time="0.042"/>
-  <testcase name="all_emptyAtFirst" classname="TaskTest" time="0.012"/>
+  <testcase name="equals_returnsTrueIfDescriptionsAretheSame" classname="TaskTest" time="0.004"/>
+  <testcase name="save_returnsTrueIfDescriptionsAretheSame" classname="TaskTest" time="0.014"/>
+  <testcase name="save_savesCategoryIdIntoDB_true" classname="TaskTest" time="0.017"/>
+  <testcase name="all_emptyAtFirst" classname="TaskTest" time="0.007"/>
   <testcase name="getDescription_taskInstantiatesWithDescription_String" classname="TaskTest" time="0.005"/>
-  <testcase name="save_assignsIdToObject" classname="TaskTest" time="0.015"/>
+  <testcase name="save_assignsIdToObject" classname="TaskTest" time="0.012"/>
   <testcase name="Task_instantiatesCorrectly_true" classname="TaskTest" time="0.005"/>
-  <testcase name="find_findsTaskInDatabase_true" classname="TaskTest" time="0.016"/>
+  <testcase name="find_findsTaskInDatabase_true" classname="TaskTest" time="0.013"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
