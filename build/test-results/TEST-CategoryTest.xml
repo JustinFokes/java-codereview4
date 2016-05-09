@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CategoryTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2016-05-09T21:37:23" hostname="epicodus-67.local" time="0.106">
+<testsuite name="CategoryTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2016-05-09T22:22:07" hostname="epicodus-67.local" time="0.125">
   <properties/>
+  <testcase name="update_updatesCategoryDescription_true" classname="CategoryTest" time="0.017"/>
   <testcase name="equals_returnsTrueIfNamesAretheSame" classname="CategoryTest" time="0.004"/>
   <testcase name="getName_categoryInstantiatesWithName_String" classname="CategoryTest" time="0.004"/>
-  <testcase name="Category_instantiatesCorrectly_true" classname="CategoryTest" time="0.004"/>
+  <testcase name="Category_instantiatesCorrectly_true" classname="CategoryTest" time="0.005"/>
   <testcase name="getTasks_returnsAllTasks_List" classname="CategoryTest" time="0.022"/>
-  <testcase name="all_emptyAtFirst" classname="CategoryTest" time="0.007"/>
+  <testcase name="all_emptyAtFirst" classname="CategoryTest" time="0.008"/>
   <testcase name="find_findCategoryInDatabase_true" classname="CategoryTest" time="0.014"/>
   <testcase name="delete_deletesAllTasksAndCategoriesAssociations" classname="CategoryTest" time="0.022"/>
   <testcase name="save_savesIntoDatabase_true" classname="CategoryTest" time="0.013"/>

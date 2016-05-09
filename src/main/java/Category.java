@@ -99,4 +99,14 @@ public class Category {
         .executeUpdate();
     }
   }
+
+  public void update(String newCategory) {
+    try(Connection con = DB.sql2o.open()){
+      String sql = "UPDATE categories SET name = :name WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("name", newCategory)
+      .addParameter("id", this.id)
+      .executeUpdate();
+    }
+  }
 }

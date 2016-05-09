@@ -82,4 +82,12 @@ public class CategoryTest {
     myCategory.delete();
     assertEquals(0, myTask.getCategories().size());
   }
+
+  @Test
+  public void update_updatesCategoryDescription_true() {
+    Category myCategory = new Category("Mow the lawn");
+    myCategory.save();
+    myCategory.update("Take a nap");
+    assertEquals("Take a nap", Category.find(myCategory.getId()).getName());
+  }
 }

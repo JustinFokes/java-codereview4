@@ -89,4 +89,12 @@ public class TaskTest {
     myCategory.delete();
     assertEquals(0, myTask.getCategories().size());
   }
+
+  @Test
+  public void update_updatesTaskDescription_true() {
+    Task myTask = new Task("Mow the lawn");
+    myTask.save();
+    myTask.update("Take a nap");
+    assertEquals("Take a nap", Task.find(myTask.getId()).getDescription());
+  }
 }
