@@ -22,7 +22,15 @@
   <button type="submit" class="btn">Add task to this category</button>
 </form>
 
-<p><a href="/categories/$category.getId()/edit">Edit this category</a></p>
+<form action = "/categories/$category.getId()/update" method = "post">
+  <label for = "updatedCategory">Update Category</label>
+  <input id = "updatedCategory" name = "updatedCategory" type="text"></input>
+  <input id="category_id" name="category_id" type="hidden" value="$category.getId()">
+  <button type="submit" class = "btn">Submit</button>
+
+</form>
+
+<p><a href="/categories/$category.getId()/update">Update this category</a></p>
 
 <a href="/categories/$category.getId()/delete">Delete this category</a>
 <a href="/">Home</a>

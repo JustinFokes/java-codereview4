@@ -99,5 +99,19 @@ public class App {
       model.put("template", "templates/delete.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/categories/:id/update", (request,response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Category category = Category.find(Integer.parseInt(request.params(":id")));
+      String updatedCategory = request.queryParams("updatedCategory");
+      // int categoryId = Integer.parseInt(request.queryParams("category_id"));
+      // Category categoryTwo = Category.find(categoryId);
+      model.put("category", category);
+      category.update(updatedCategory);
+      model.put("template", "templates/update-success.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
+
+
 }

@@ -110,4 +110,20 @@ public class AppTest extends FluentTest {
     click("a", withText("Delete this Task"));
     assertThat(pageSource()).contains("Success! Your chore is no more.");
   }
+
+  @Test
+  public void taskIsUpdated() {
+    Task newTask = new Task("Mow the lawn");
+    newTask.save();
+    String url = String.format("http://localhost:4567/tasks/%d", newTask.getId());
+    goTo(url);
+    click("a", withText("Update this task"))
+    assertThat(pageSource()).contains("Success! Your task/category has been updated.");
+
+  }
+
+  // @Test
+  // public void categoryIsUpdated() {
+  //
+  // }
 }
