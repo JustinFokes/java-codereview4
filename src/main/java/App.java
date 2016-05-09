@@ -104,11 +104,19 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Category category = Category.find(Integer.parseInt(request.params(":id")));
       String updatedCategory = request.queryParams("updatedCategory");
-      // int categoryId = Integer.parseInt(request.queryParams("category_id"));
-      // Category categoryTwo = Category.find(categoryId);
       model.put("category", category);
       category.update(updatedCategory);
       model.put("template", "templates/update-success.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/tasks/:id/update", (request,response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Task task = Task.find(Integer.parseInt(request.params(":id")));
+      String updatedTask = request.queryParams("updateTask");
+      task.update(updatedTask);
+      model.put("task", task);
+      model.put("template", "templates/task-update-success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
