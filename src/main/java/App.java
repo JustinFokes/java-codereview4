@@ -54,14 +54,9 @@ public class App {
 
     post("/tasks", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      int catId = Integer.parseInt(request.queryParams("categoryId"));
-      Category category = Category.find(catId);
-      String taskDueDate = request.queryParams("dueDate");
       String description = request.queryParams("description");
-      Task newTask = new Task(description, catId, taskDueDate);
+      Task newTask = new Task(description);
       newTask.save();
-
-      model.put("category", category);
       model.put("template", "templates/category-tasks-success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
