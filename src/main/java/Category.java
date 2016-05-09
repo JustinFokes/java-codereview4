@@ -93,9 +93,9 @@ public class Category {
         .addParameter("id", this.getId())
         .executeUpdate();
 
-    String joinDeleteQuery = "DELETE FROM categories_tasks WHERE category_id = :categoryId";
+    String joinDeleteQuery = "DELETE FROM categories_tasks WHERE category_id = :category_id";
       con.createQuery(joinDeleteQuery)
-        .addParameter("categoryId", this.getId())
+        .addParameter("category_id", this.getId())
         .executeUpdate();
     }
   }

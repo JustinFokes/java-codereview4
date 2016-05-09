@@ -1,6 +1,5 @@
 import java.util.List;
 import org.sql2o.*;
-import java.util.List;
 import java.util.ArrayList;
 
 public class Task {
@@ -68,20 +67,6 @@ public class Task {
     }
   }
 
-  public void delete() {
-    try(Connection con = DB.sql2o.open()) {
-    String deleteQuery = "DELETE FROM tasks WHERE id = :id;";
-    con.createQuery(deleteQuery)
-      .addParameter("id", this.id)
-      .executeUpdate();
-
-    String joinDeleteQuery = "DELETE FROM categories_tasks WHERE task_id = :taskId";
-      con.createQuery(joinDeleteQuery)
-        .addParameter("categoryId", this.getId())
-        .executeUpdate();
-    }
-  }
-
   public void addCategory(Category category) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO categories_tasks (category_id, task_id) VALUES (:category_id, :task_id)";
@@ -102,13 +87,27 @@ public class Task {
     List<Category> categories = new ArrayList<Category>();
 
     for (Integer categoryId : categoryIds) {
-      String taskQuery = "Select * From categories WHERE id = :categoryId";
+      String taskQuery = "SELECT * FROM categories WHERE id = :categoryId";
       Category category = con.createQuery(taskQuery)
         .addParameter("categoryId", categoryId)
         .executeAndFetchFirst(Category.class);
       categories.add(category);
     }
     return categories;
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+    String deleteQuery = "DELETE FROM tasks WHERE id = :id;";
+    con.createQuery(deleteQuery)
+      .addParameter("id", this.id)
+      .executeUpdate();
+
+    String joinDeleteQuery = "DELETE FROM categories_tasks WHERE task_id = :taskId";
+      con.createQuery(joinDeleteQuery)
+        .addParameter("taskId", this.getId())
+        .executeUpdate();
     }
   }
 }
