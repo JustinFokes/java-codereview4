@@ -100,4 +100,14 @@ public class AppTest extends FluentTest {
     click("a", withText("Delete this category"));
     assertThat(pageSource()).contains("Success! Your chore is no more.");
   }
+
+  @Test
+  public void taskIsDeleted() {
+    Task newTask = new Task("Mow the lawn");
+    newTask.save();
+    String url = String.format("http://localhost:4567/tasks/%d", newTask.getId());
+    goTo(url);
+    click("a", withText("Delete this Task"));
+    assertThat(pageSource()).contains("Success! Your chore is no more.");
+  }
 }
