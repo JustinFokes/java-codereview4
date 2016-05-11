@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ReviewTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-11T20:11:32" hostname="epicodus-67.local" time="0.176">
+<testsuite name="ReviewTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-05-11T20:42:45" hostname="epicodus-67.local" time="0.155">
   <properties/>
-  <testcase name="addRecipe_userAddedToRecipe_true" classname="ReviewTest" time="0.092"/>
-  <testcase name="addUser_userAddedToReview_true" classname="ReviewTest" time="0.025"/>
-  <testcase name="methods_getsAllInfo_true" classname="ReviewTest" time="0.006"/>
-  <testcase name="all_emptyAtFirst" classname="ReviewTest" time="0.011"/>
+  <testcase name="addRecipe_userAddedToRecipe_true" classname="ReviewTest" time="0.025"/>
+  <testcase name="addUser_userAddedToReview_true" classname="ReviewTest" time="0.024"/>
+  <testcase name="methods_getsAllInfo_true" classname="ReviewTest" time="0.005"/>
+  <testcase name="all_emptyAtFirst" classname="ReviewTest" time="0.01"/>
+  <testcase name="delete_reviewDeletedFromAllTables_true" classname="ReviewTest" time="0.041"/>
   <testcase name="Review_instantiatesCorrectly_true" classname="ReviewTest" time="0.006"/>
-  <testcase name="find_findReviewInDatabase_true" classname="ReviewTest" time="0.015"/>
-  <testcase name="save_savesIntoDatabaseAndCreatesId_true" classname="ReviewTest" time="0.02"/>
+  <testcase name="find_findReviewInDatabase_true" classname="ReviewTest" time="0.022"/>
+  <testcase name="save_savesIntoDatabaseAndCreatesId_true" classname="ReviewTest" time="0.019"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

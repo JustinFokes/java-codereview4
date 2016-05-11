@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class User {
   private int id;
   private String name;
+
   public User(String name) {
     this.name = name;
   }
@@ -136,7 +137,8 @@ public class User {
     }
   }
 
-  public void update(String newUser) {
+//This is an update method, however, we can call it changeName()
+  public void changeName(String newUser) {
     try(Connection con = DB.sql2o.open()){
       String sql = "UPDATE users SET name = :name WHERE id = :id";
       con.createQuery(sql)

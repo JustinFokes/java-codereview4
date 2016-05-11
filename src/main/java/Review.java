@@ -119,19 +119,24 @@ public class Review {
     }
   }
 
-  // public void delete() {
-  // try(Connection con = DB.sql2o.open()) {
-  //   String deleteQuery = "DELETE FROM users WHERE id = :id;";
-  //     con.createQuery(deleteQuery)
-  //       .addParameter("id", this.getId())
-  //       .executeUpdate();
-  //
-  //   String joinDeleteQuery = "DELETE FROM categories_tasks WHERE category_id = :category_id";
-  //     con.createQuery(joinDeleteQuery)
-  //       .addParameter("category_id", this.getId())
-  //       .executeUpdate();
-  //   }
-  // }
+  public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+    String deleteQuery = "DELETE FROM reviews WHERE id = :id";
+      con.createQuery(deleteQuery)
+        .addParameter("id", this.getId())
+        .executeUpdate();
+
+    String joinDeleteQuery = "DELETE FROM users_reviews WHERE review_id = :review_id";
+      con.createQuery(joinDeleteQuery)
+        .addParameter("review_id", this.getId())
+        .executeUpdate();
+
+    String joinDeleteQueryTwo = "DELETE FROM recipes_reviews WHERE review_id = :review_id";
+      con.createQuery(joinDeleteQueryTwo)
+      .addParameter("review_id", this.getId())
+      .executeUpdate();
+    }
+  }
 
   public void update(String newReview) {
     try(Connection con = DB.sql2o.open()){

@@ -78,4 +78,19 @@ public class RecipeTest {
     User savedUser = myRecipe.getUsers().get(0);
     assertTrue(myUser.equals(savedUser));
   }
+
+  @Test
+  public void delete_recipeDeletedFromAllTables_true() {
+    Review myReview = new Review("This recipe sucks.");
+    myReview.save();
+    User myUser = new User("Perry");
+    myUser.save();
+    Recipe myRecipe = new Recipe("Fun Chicken", "This is a list of ingredients",  "These are the instructions", "Spanglish");
+    myRecipe.save();
+    myRecipe.addUser(myUser);
+    myRecipe.addReview(myReview);
+    myRecipe.delete();
+    assertEquals(0, Recipe.all().size());
+  }
+
 }

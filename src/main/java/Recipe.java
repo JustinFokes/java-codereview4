@@ -139,22 +139,24 @@ public class Recipe {
     }
   }
 
+  public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+    String deleteQuery = "DELETE FROM recipes WHERE id = :id";
+      con.createQuery(deleteQuery)
+        .addParameter("id", this.getId())
+        .executeUpdate();
 
+    String joinDeleteQuery = "DELETE FROM recipes_users WHERE recipe_id = :recipe_id";
+      con.createQuery(joinDeleteQuery)
+        .addParameter("recipe_id", this.getId())
+        .executeUpdate();
 
-  // public void delete() {
-  // try(Connection con = DB.sql2o.open()) {
-  //   String deleteQuery = "DELETE FROM users WHERE id = :id;";
-  //     con.createQuery(deleteQuery)
-  //       .addParameter("id", this.getId())
-  //       .executeUpdate();
-  //
-  //   String joinDeleteQuery = "DELETE FROM categories_tasks WHERE category_id = :category_id";
-  //     con.createQuery(joinDeleteQuery)
-  //       .addParameter("category_id", this.getId())
-  //       .executeUpdate();
-  //   }
-  // }
-
+    String joinDeleteQueryTwo = "DELETE FROM recipes_reviews WHERE recipe_id = :recipe_id";
+      con.createQuery(joinDeleteQueryTwo)
+      .addParameter("recipe_id", this.getId())
+      .executeUpdate();
+    }
+  }
   // public void update(String newRecipe) {
   //   try(Connection con = DB.sql2o.open()){
   //     String sql = "UPDATE recipes SET name = :name WHERE id = :id";
