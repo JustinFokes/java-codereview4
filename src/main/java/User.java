@@ -117,19 +117,24 @@ public class User {
     }
   }
 
-  // public void delete() {
-  // try(Connection con = DB.sql2o.open()) {
-  //   String deleteQuery = "DELETE FROM users WHERE id = :id;";
-  //     con.createQuery(deleteQuery)
-  //       .addParameter("id", this.getId())
-  //       .executeUpdate();
-  //
-  //   String joinDeleteQuery = "DELETE FROM categories_tasks WHERE category_id = :category_id";
-  //     con.createQuery(joinDeleteQuery)
-  //       .addParameter("category_id", this.getId())
-  //       .executeUpdate();
-  //   }
-  // }
+  public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+    String deleteQuery = "DELETE FROM users WHERE id = :id";
+      con.createQuery(deleteQuery)
+        .addParameter("id", this.getId())
+        .executeUpdate();
+
+    String joinDeleteQuery = "DELETE FROM users_reviews WHERE user_id = :user_id";
+      con.createQuery(joinDeleteQuery)
+        .addParameter("user_id", this.getId())
+        .executeUpdate();
+
+    String joinDeleteQueryTwo = "DELETE FROM recipes_users WHERE user_id = :user_id";
+      con.createQuery(joinDeleteQueryTwo)
+      .addParameter("user_id", this.getId())
+      .executeUpdate();
+    }
+  }
 
   public void update(String newUser) {
     try(Connection con = DB.sql2o.open()){
