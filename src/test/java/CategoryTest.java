@@ -16,6 +16,6 @@ public class CategoryTest {
   @Test
   public void methods_getsAllInfo_true() {
     Category myCategory = new Category("Chicken");
-    assertEquals("Chicken", myCategory.getDescription())
+    assertEquals("Chicken", myCategory.getDescription());
   }
 }

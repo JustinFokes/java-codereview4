@@ -3,7 +3,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.List;
 
-public class userTest {
+public class UserTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
@@ -16,6 +16,6 @@ public class userTest {
   @Test
   public void methods_getsAllInfo_true() {
     User myUser = new User("Justin");
-    assertEquals("Justin", myUser.getName())
+    assertEquals("Justin", myUser.getName());
   }
 }

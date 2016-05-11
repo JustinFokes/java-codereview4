@@ -6,7 +6,7 @@ public class Category {
   private int id;
   private String description;
 
-  public Task(String description) {
+  public Category(String description) {
     this.description = description;
   }
 

@@ -33,7 +33,7 @@ public class Review {
       return false;
     } else {
       Review newReview = (Review) otherReview;
-      return this.getName().equals(newReview.getName()) &&
+      return this.getReview().equals(newReview.getReview()) &&
              this.getId() == newReview.getId();
     }
   }
@@ -42,7 +42,7 @@ public class Review {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO reviews(userReview) VALUES (:userReview)";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("name", this.name)
+        .addParameter("name", this.userReview)
         .executeUpdate()
         .getKey();
     }

@@ -16,6 +16,6 @@ public class ReviewTest {
   @Test
   public void methods_getsAllInfo_true() {
     Review myReview = new Review("This recipe sucks.");
-    assertEquals("This recipe sucks.", myReview.getDescription());
+    assertEquals("This recipe sucks.", myReview.getReview());
   }
 }
