@@ -5,15 +5,15 @@ import java.util.ArrayList;
 
 public class Review {
   private int id;
-  private String userReview;
+  private String user_review;
 
-  public Review(String userReview) {
-    this.userReview = userReview;
+  public Review(String user_review) {
+    this.user_review = user_review;
 
   }
 
   public String getReview() {
-    return userReview;
+    return user_review;
   }
 
   public int getId() {
@@ -21,7 +21,7 @@ public class Review {
   }
 
   public static List<Review> all() {
-    String sql = "SELECT id, name FROM reviews";
+    String sql = "SELECT id, user_review FROM reviews";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Review.class);
     }
@@ -40,9 +40,9 @@ public class Review {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO reviews(userReview) VALUES (:userReview)";
+      String sql = "INSERT INTO reviews(user_review) VALUES (:user_review)";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("name", this.userReview)
+        .addParameter("user_review", this.user_review)
         .executeUpdate()
         .getKey();
     }
@@ -50,7 +50,7 @@ public class Review {
 
   public static Review find(int id) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM users where id=:id";
+      String sql = "SELECT * FROM reviews WHERE id=:id";
       Review review = con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(Review.class);

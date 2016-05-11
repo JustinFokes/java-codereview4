@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RecipeTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-05-11T16:16:40" hostname="epicodus-67.local" time="0.012">
+<testsuite name="RecipeTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-11T16:54:13" hostname="epicodus-67.local" time="0.075">
   <properties/>
-  <testcase name="methods_getsAllInfo_true" classname="RecipeTest" time="0.007"/>
+  <testcase name="find_findRecipeInDatabase_true" classname="RecipeTest" time="0.017"/>
+  <testcase name="equals_returnsTrueIRecipesAretheSame" classname="RecipeTest" time="0.006"/>
+  <testcase name="methods_getsAllInfo_true" classname="RecipeTest" time="0.005"/>
+  <testcase name="all_emptyAtFirst" classname="RecipeTest" time="0.01"/>
+  <testcase name="save_savesIntoDatabase_true" classname="RecipeTest" time="0.015"/>
+  <testcase name="save_assignsIdToObject" classname="RecipeTest" time="0.016"/>
   <testcase name="Recipe_instantiatesCorrectly_true" classname="RecipeTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

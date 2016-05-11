@@ -32,7 +32,7 @@ public class Recipe {
   }
 
   public static List<Recipe> all() {
-    String sql = "SELECT id, name FROM users";
+    String sql = "SELECT id, name, ingredients, instructions FROM recipes";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Recipe.class);
     }
@@ -80,7 +80,7 @@ public class Recipe {
   //     .executeUpdate();
   //   }
   // }
-
+  //
   // public List<Task> getTasks() {
   //   try(Connection con = DB.sql2o.open()) {
   //     String joinQuery = "SELECT task_id FROM categories_tasks WHERE category_id = :category_id";

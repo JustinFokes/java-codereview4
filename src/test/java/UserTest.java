@@ -18,4 +18,41 @@ public class UserTest {
     User myUser = new User("Justin");
     assertEquals("Justin", myUser.getName());
   }
+
+
+    @Test
+    public void all_emptyAtFirst() {
+      assertEquals(User.all().size(), 0);
+    }
+
+    @Test
+    public void equals_returnsTrueIUsersAretheSame() {
+      User myUserOne = new User("Justin");
+      User myUserTwo = new User("Justin");
+      assertTrue(myUserOne.equals(myUserTwo));
+    }
+
+    @Test
+    public void save_savesIntoDatabase_true() {
+      User myUser = new User("Justin");
+      myUser.save();
+      assertTrue(User.all().get(0).equals(myUser));
+    }
+
+    @Test
+    public void save_assignsIdToObject() {
+      User myUser = new User("Justin");
+      myUser.save();
+      User savedUser = User.all().get(0);
+      assertEquals(myUser.getId(), savedUser.getId());
+    }
+
+    @Test
+    public void find_findUserInDatabase_true() {
+      User myUser = new User("Justin");
+      myUser.save();
+      User savedUser = User.find(myUser.getId());
+      assertTrue(myUser.equals(savedUser));
+    }
+
 }

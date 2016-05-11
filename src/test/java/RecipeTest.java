@@ -20,4 +20,40 @@ public class RecipeTest {
     assertEquals("This is a list of ingredients", myRecipe.getIngredients());
     assertEquals("These are the instructions", myRecipe.getInstructions());
   }
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Recipe.all().size(), 0);
+  }
+
+  @Test
+  public void equals_returnsTrueIRecipesAretheSame() {
+    Recipe myRecipeOne = new Recipe("Fun Chicken", "This is a list of ingredients",  "These are the instructions");
+    Recipe myRecipeTwo = new Recipe("Fun Chicken", "This is a list of ingredients",  "These are the instructions");
+    assertTrue(myRecipeOne.equals(myRecipeTwo));
+  }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Recipe myRecipe = new Recipe("Fun Chicken", "This is a list of ingredients",  "These are the instructions");
+    myRecipe.save();
+    assertTrue(Recipe.all().get(0).equals(myRecipe));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Recipe myRecipe = new Recipe("Fun Chicken", "This is a list of ingredients",  "These are the instructions");
+    myRecipe.save();
+    Recipe savedRecipe = Recipe.all().get(0);
+    assertEquals(myRecipe.getId(), savedRecipe.getId());
+  }
+
+  @Test
+  public void find_findRecipeInDatabase_true() {
+    Recipe myRecipe = new Recipe("Fun Chicken", "This is a list of ingredients",  "These are the instructions");
+    myRecipe.save();
+    Recipe savedRecipe = Recipe.find(myRecipe.getId());
+    assertTrue(myRecipe.equals(savedRecipe));
+  }
+
 }

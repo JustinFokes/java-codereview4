@@ -19,7 +19,7 @@ public class Category {
   }
 
   public static List<Category> all() {
-    String sql = "SELECT id, description FROM tasks";
+    String sql = "SELECT id, description FROM categories";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Category.class);
     }
