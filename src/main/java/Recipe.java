@@ -8,11 +8,13 @@ public class Recipe {
   private String name;
   private String ingredients;
   private String instructions;
+  private String category;
 
-  public Recipe(String name, String ingredients, String instructions) {
+  public Recipe(String name, String ingredients, String instructions, String category) {
     this.name = name;
     this.ingredients = ingredients;
     this.instructions = instructions;
+    this.category = category;
   }
 
   public String getName() {
@@ -27,12 +29,16 @@ public class Recipe {
     return  instructions;
   }
 
+  public String getCategory() {
+    return category;
+  }
+
   public int getId() {
     return id;
   }
 
   public static List<Recipe> all() {
-    String sql = "SELECT id, name, ingredients, instructions FROM recipes";
+    String sql = "SELECT id, name, ingredients, instructions, category FROM recipes";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Recipe.class);
     }
@@ -51,11 +57,12 @@ public class Recipe {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO recipes(name, ingredients, instructions) VALUES (:name, :ingredients, :instructions)";
+      String sql = "INSERT INTO recipes(name, ingredients, instructions, category) VALUES (:name, :ingredients, :instructions, :category)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("ingredients", this.ingredients)
         .addParameter("instructions", this.instructions)
+        .addParameter("category", this.category)
         .executeUpdate()
         .getKey();
     }
@@ -71,35 +78,68 @@ public class Recipe {
     }
   }
 
-  // public void addRecipe(Recipe recipe) {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "INSERT INTO categories_tasks (category_id, task_id) VALUES (:category_id, :task_id)";
-  //     con.createQuery(sql)
-  //     .addParameter("category_id", this.getId())
-  //     .addParameter("task_id", task.getId())
-  //     .executeUpdate();
-  //   }
-  // }
-  //
-  // public List<Task> getTasks() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String joinQuery = "SELECT task_id FROM categories_tasks WHERE category_id = :category_id";
-  //     List<Integer> taskIds = con.createQuery(joinQuery)
-  //       .addParameter("category_id", this.getId())
-  //       .executeAndFetch(Integer.class);
-  //
-  //     List<Task> tasks = new ArrayList<Task>();
-  //
-  //     for (Integer taskId : taskIds) {
-  //       String taskQuery = "SELECT * FROM tasks WHERE id = :taskId";
-  //       Task task = con.createQuery(taskQuery)
-  //         .addParameter("taskId", taskId)
-  //         .executeAndFetchFirst(Task.class);
-  //       tasks.add(task);
-  //     }
-  //     return tasks;
-  //   }
-  // }
+  public void addReview(Review review) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO recipes_reviews (recipe_id, review_id) VALUES (:recipe_id, :review_id)";
+      con.createQuery(sql)
+      .addParameter("recipe_id", this.getId())
+      .addParameter("review_id", review.getId())
+      .executeUpdate();
+    }
+  }
+
+  public void addUser(User user) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO recipes_users (recipe_id, user_id) VALUES (:recipe_id, :user_id)";
+      con.createQuery(sql)
+      .addParameter("recipe_id", this.getId())
+      .addParameter("user_id", user.getId())
+      .executeUpdate();
+    }
+  }
+
+
+  public List<Review> getReviews() {
+    try(Connection con = DB.sql2o.open()) {
+      String joinQuery = "SELECT review_id FROM recipes_reviews WHERE recipe_id = :recipe_id";
+      List<Integer> reviewIds = con.createQuery(joinQuery)
+        .addParameter("recipe_id", this.getId())
+        .executeAndFetch(Integer.class);
+
+      List<Review> reviews = new ArrayList<Review>();
+
+      for (Integer reviewId : reviewIds) {
+        String reviewQuery = "SELECT * FROM reviews WHERE id = :reviewId";
+        Review review = con.createQuery(reviewQuery)
+          .addParameter("reviewId", reviewId)
+          .executeAndFetchFirst(Review.class);
+        reviews.add(review);
+      }
+      return reviews;
+    }
+  }
+
+  public List<User> getUsers() {
+    try(Connection con = DB.sql2o.open()) {
+      String joinQuery = "SELECT user_id FROM recipes_users WHERE recipe_id = :recipe_id";
+      List<Integer>  userIds = con.createQuery(joinQuery)
+        .addParameter("recipe_id", this.getId())
+        .executeAndFetch(Integer.class);
+
+      List<User> users = new ArrayList<User>();
+
+      for (Integer userId : userIds) {
+        String userQuery = "SELECT * FROM users WHERE id = :userId";
+        User user = con.createQuery(userQuery)
+          .addParameter("userId", userId)
+          .executeAndFetchFirst(User.class);
+        users.add(user);
+      }
+      return users;
+    }
+  }
+
+
 
   // public void delete() {
   // try(Connection con = DB.sql2o.open()) {

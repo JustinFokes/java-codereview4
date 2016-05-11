@@ -55,4 +55,26 @@ public class UserTest {
       assertTrue(myUser.equals(savedUser));
     }
 
+    @Test
+    public void addRecipe_recipesAddedToRecipesUsersTable_true() {
+      User myUser = new User("Perry");
+      myUser.save();
+      Recipe myRecipe = new Recipe("Fun Chicken", "Add Chicken.", "Cook Chicken", "Chicken");
+      myRecipe.save();
+      myUser.addRecipe(myRecipe);
+      Recipe savedRecipe = myUser.getRecipe().get(0);
+      assertTrue(myRecipe.equals(savedRecipe));
+    }
+
+    @Test
+    public void addReview_reviewAddedToRecipe_true() {
+      Review myReview = new Review("This recipe sucks.");
+      myReview.save();
+      Recipe myRecipe = new Recipe("Fun Chicken", "This is a list of ingredients",  "These are the instructions", "Spanglish");
+      myRecipe.save();
+      myReview.addRecipe(myRecipe);
+      Recipe savedRecipe = myReview.getRecipes().get(0);
+      assertTrue(myRecipe.equals(savedRecipe));
+    }
+
 }

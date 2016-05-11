@@ -40,4 +40,29 @@ public class ReviewTest {
     Review savedReview = Review.find(myReview.getId());
     assertTrue(myReview.equals(savedReview));
   }
+
+  @Test
+  public void addUser_userAddedToReview_true() {
+    User myUser = new User("Perry");
+    myUser.save();
+    Review myReview = new Review("This recipe sucks.");
+    myReview.save();
+    myReview.addUser(myUser);
+    User savedUser = myReview.getUser().get(0);
+    assertTrue(myUser.equals(savedUser));
+  }
+
+  @Test
+  public void addRecipe_userAddedToRecipe_true() {
+    Review myReview = new Review("This recipe sucks.");
+    myReview.save();
+    Recipe myRecipe = new Recipe("Fun Chicken", "This is a list of ingredients",  "These are the instructions", "Spanglish");
+    myRecipe.save();
+    myReview.addRecipe(myRecipe);
+    Recipe savedRecipe = myReview.getRecipes().get(0);
+    assertTrue(myRecipe.equals(savedRecipe));
+  }
+
+
+
 }

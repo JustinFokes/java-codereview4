@@ -30,39 +30,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: categories; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
---
-
-CREATE TABLE categories (
-    id integer NOT NULL,
-    description character varying
-);
-
-
-ALTER TABLE categories OWNER TO "Guest";
-
---
--- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
---
-
-CREATE SEQUENCE categories_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE categories_id_seq OWNER TO "Guest";
-
---
--- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
---
-
-ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
-
-
---
 -- Name: recipes; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
@@ -70,7 +37,8 @@ CREATE TABLE recipes (
     id integer NOT NULL,
     name character varying,
     ingredients text,
-    instructions text
+    instructions text,
+    category character varying
 );
 
 
@@ -95,6 +63,74 @@ ALTER TABLE recipes_id_seq OWNER TO "Guest";
 --
 
 ALTER SEQUENCE recipes_id_seq OWNED BY recipes.id;
+
+
+--
+-- Name: recipes_reviews; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+--
+
+CREATE TABLE recipes_reviews (
+    id integer NOT NULL,
+    recipe_id integer,
+    review_id integer
+);
+
+
+ALTER TABLE recipes_reviews OWNER TO "Guest";
+
+--
+-- Name: recipes_reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+--
+
+CREATE SEQUENCE recipes_reviews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE recipes_reviews_id_seq OWNER TO "Guest";
+
+--
+-- Name: recipes_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+--
+
+ALTER SEQUENCE recipes_reviews_id_seq OWNED BY recipes_reviews.id;
+
+
+--
+-- Name: recipes_users; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+--
+
+CREATE TABLE recipes_users (
+    id integer NOT NULL,
+    recipe_id integer,
+    user_id integer
+);
+
+
+ALTER TABLE recipes_users OWNER TO "Guest";
+
+--
+-- Name: recipes_users_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+--
+
+CREATE SEQUENCE recipes_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE recipes_users_id_seq OWNER TO "Guest";
+
+--
+-- Name: recipes_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+--
+
+ALTER SEQUENCE recipes_users_id_seq OWNED BY recipes_users.id;
 
 
 --
@@ -136,9 +172,7 @@ ALTER SEQUENCE reviews_id_seq OWNED BY reviews.id;
 
 CREATE TABLE users (
     id integer NOT NULL,
-    name character varying,
-    recipes_id integer,
-    reviews_id integer
+    name character varying
 );
 
 
@@ -166,10 +200,37 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
+-- Name: users_reviews; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
-ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
+CREATE TABLE users_reviews (
+    id integer NOT NULL,
+    user_id integer,
+    review_id integer
+);
+
+
+ALTER TABLE users_reviews OWNER TO "Guest";
+
+--
+-- Name: users_reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+--
+
+CREATE SEQUENCE users_reviews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_reviews_id_seq OWNER TO "Guest";
+
+--
+-- Name: users_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+--
+
+ALTER SEQUENCE users_reviews_id_seq OWNED BY users_reviews.id;
 
 
 --
@@ -177,6 +238,20 @@ ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_s
 --
 
 ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
+--
+
+ALTER TABLE ONLY recipes_reviews ALTER COLUMN id SET DEFAULT nextval('recipes_reviews_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
+--
+
+ALTER TABLE ONLY recipes_users ALTER COLUMN id SET DEFAULT nextval('recipes_users_id_seq'::regclass);
 
 
 --
@@ -194,25 +269,17 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: Guest
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
 --
 
-COPY categories (id, description) FROM stdin;
-\.
-
-
---
--- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
---
-
-SELECT pg_catalog.setval('categories_id_seq', 1, false);
+ALTER TABLE ONLY users_reviews ALTER COLUMN id SET DEFAULT nextval('users_reviews_id_seq'::regclass);
 
 
 --
 -- Data for Name: recipes; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY recipes (id, name, ingredients, instructions) FROM stdin;
+COPY recipes (id, name, ingredients, instructions, category) FROM stdin;
 \.
 
 
@@ -221,6 +288,36 @@ COPY recipes (id, name, ingredients, instructions) FROM stdin;
 --
 
 SELECT pg_catalog.setval('recipes_id_seq', 1, false);
+
+
+--
+-- Data for Name: recipes_reviews; Type: TABLE DATA; Schema: public; Owner: Guest
+--
+
+COPY recipes_reviews (id, recipe_id, review_id) FROM stdin;
+\.
+
+
+--
+-- Name: recipes_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+--
+
+SELECT pg_catalog.setval('recipes_reviews_id_seq', 1, false);
+
+
+--
+-- Data for Name: recipes_users; Type: TABLE DATA; Schema: public; Owner: Guest
+--
+
+COPY recipes_users (id, recipe_id, user_id) FROM stdin;
+\.
+
+
+--
+-- Name: recipes_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+--
+
+SELECT pg_catalog.setval('recipes_users_id_seq', 1, false);
 
 
 --
@@ -242,7 +339,7 @@ SELECT pg_catalog.setval('reviews_id_seq', 1, false);
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY users (id, name, recipes_id, reviews_id) FROM stdin;
+COPY users (id, name) FROM stdin;
 \.
 
 
@@ -254,11 +351,18 @@ SELECT pg_catalog.setval('users_id_seq', 1, false);
 
 
 --
--- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Data for Name: users_reviews; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-ALTER TABLE ONLY categories
-    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+COPY users_reviews (id, user_id, review_id) FROM stdin;
+\.
+
+
+--
+-- Name: users_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+--
+
+SELECT pg_catalog.setval('users_reviews_id_seq', 1, false);
 
 
 --
@@ -267,6 +371,22 @@ ALTER TABLE ONLY categories
 
 ALTER TABLE ONLY recipes
     ADD CONSTRAINT recipes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recipes_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+--
+
+ALTER TABLE ONLY recipes_reviews
+    ADD CONSTRAINT recipes_reviews_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recipes_users_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+--
+
+ALTER TABLE ONLY recipes_users
+    ADD CONSTRAINT recipes_users_pkey PRIMARY KEY (id);
 
 
 --
@@ -283,6 +403,14 @@ ALTER TABLE ONLY reviews
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+--
+
+ALTER TABLE ONLY users_reviews
+    ADD CONSTRAINT users_reviews_pkey PRIMARY KEY (id);
 
 
 --
