@@ -35,6 +35,7 @@ public class App {
       User newUser = User.find(Integer.parseInt(request.params(":id")));
       model.put("thisUser", newUser);
       model.put("users", User.all());
+      model.put("recipe", Recipe.all());
       model.put("template", "templates/user_home.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -46,10 +47,40 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/recipes/new", (request, response) -> {
+    get("/user/:id/recipes/new", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
+      User newUser = User.find(Integer.parseInt(request.params(":id")));
+      model.put("user", newUser);
       model.put("template", "templates/recipe_form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/user/:id/recipes", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      User newUser = User.find(Integer.parseInt(request.params(":id")));
+
+      String recipeName = request.queryParams("name");
+      String recipeIngredients = request.queryParams("ingredients");
+      String recipeInstructions = request.queryParams("instructions");
+      String recipeCategory = request.queryParams("categories");
+      Recipe newRecipe = new Recipe(recipeName, recipeIngredients, recipeInstructions, recipeCategory);
+      newRecipe.save();
+      newUser.addRecipe(newRecipe);
+      model.put("recipe", newRecipe);
+      model.put("user", newUser);
+      model.put("users", User.all());
+      model.put("recipes", Recipe.all());
+      response.redirect("/user/" + newUser.getId());
+      return null;
+      });
+
+    get("/recipe/:rId", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":rId")));
+      model.put("recipe", recipe);
+      model.put("template", "templates/recipe.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }

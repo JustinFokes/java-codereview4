@@ -2,7 +2,18 @@
     <h1>$thisUser.getName()</h1>
 #end
 
+<hr>
+Your Recipes:
+#foreach($recipe in $thisUser.getRecipes())
+  <a href="/recipe/$recipe.getId()"<h3>$recipe.getName()</h3></a>
+#end
+<hr>
+
+<hr>
+Your Reviews:
+<hr>
+
 <h3>Welcome, $thisUser.getName()!</h3>
   <h5>Click the buttons below to Add, Search, and Review recipes.</h5>
-<a href="/recipes/new"><button type="button" class="button button-primary" name="button">Add Recipe</button></a>
+<a href="/user/$thisUser.getId()/recipes/new"><button type="button" class="button button-primary" name="button">Add Recipe</button></a>
 <a href="/"><button type="button" class="button button-primary" name="button">Search Recipes</button></a>

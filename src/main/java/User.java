@@ -68,7 +68,7 @@ public class User {
   }
 
 //was SELECT user_id, but changed to recipe_id
-  public List<Recipe> getRecipe() {
+  public List<Recipe> getRecipes() {
     try(Connection con = DB.sql2o.open()) {
       String joinQuery = "SELECT recipe_id FROM recipes_users WHERE user_id = :user_id";
       List<Integer> recipeIds = con.createQuery(joinQuery)
