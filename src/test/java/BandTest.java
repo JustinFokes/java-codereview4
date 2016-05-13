@@ -74,7 +74,7 @@ public class BandTest {
     Band myBand = new Band("Fugazi", "Punk", "DC");
     myBand.save();
     myBand.update("Jim", "Pop", "Seattle");
-    assertEquals("Jill", Band.find(myBand.getId()).getName());
+    assertEquals("Jim", Band.find(myBand.getId()).getName());
   }
 
 }

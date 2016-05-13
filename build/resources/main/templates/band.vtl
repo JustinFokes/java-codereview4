@@ -31,3 +31,24 @@ Venues This Band is Playing At!
 <a href="/">Home</a>
 <hr>
 
+<hr>
+<h3>Update Band Information</h4>
+
+<form method="post" action="/band/$thisBand.getId()/update">
+	<div class="row">
+	  <div class="six columns">
+	    <label for="name">Name</label>
+	    <input class="u-full-width" type="text" placeholder="newName" name="newName" id="newName"></input>
+	    <input class="u-full-width" type="text" placeholder="newGenre" name="newGenre" id="newGenre"></input>
+	    <input class="u-full-width" type="text" placeholder="new home town" name="newHomeTown" id="newHomeTown"></input>
+	    <input class="button-primary" type="submit" value="Submit"></input>
+	  </div>
+	</div>
+</form>
+
+
+<hr>
+	<h3>Delete This Band From The Database</h3>
+	<a href="/band/$thisBand.getId()/delete"><input class="button-primary" type="submit" value="Delete"></input></a>
+<hr>
+

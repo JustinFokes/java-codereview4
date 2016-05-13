@@ -107,8 +107,14 @@ public class Band {
         con.createQuery(deleteQuery)
           .addParameter("id", this.getId())
           .executeUpdate();
+
+      String deleteJoinQuery = "DELETE FROM bands_venues WHERE band_id = :band_id";
+        con.createQuery(deleteJoinQuery)
+          .addParameter("band_id", this.getId())
+          .executeUpdate();
       }
     }
+
   public void update(String name, String genre, String homeTown) {
     try(Connection con = DB.sql2o.open()){
       String sql = "UPDATE bands SET name = :name WHERE id = :id";

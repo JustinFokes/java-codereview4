@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="VenueTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-05-13T21:02:08" hostname="Justins-MacBook-Pro.local" time="0.172">
+<testsuite name="VenueTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-05-13T22:01:18" hostname="Justins-MacBook-Pro.local" time="0.122">
   <properties/>
-  <testcase name="find_VenueIsFoundById_true" classname="VenueTest" time="0.063"/>
-  <testcase name="equals_returnsTrueIRecipesAretheSame" classname="VenueTest" time="0.005"/>
-  <testcase name="addBand_addsBandToVenue_true" classname="VenueTest" time="0.039"/>
-  <testcase name="methods_getsAllInfo_true" classname="VenueTest" time="0.005"/>
-  <testcase name="all_emptyAtFirst" classname="VenueTest" time="0.01"/>
+  <testcase name="find_VenueIsFoundById_true" classname="VenueTest" time="0.019"/>
+  <testcase name="equals_returnsTrueIRecipesAretheSame" classname="VenueTest" time="0.006"/>
+  <testcase name="addBand_addsBandToVenue_true" classname="VenueTest" time="0.032"/>
+  <testcase name="methods_getsAllInfo_true" classname="VenueTest" time="0.007"/>
+  <testcase name="all_emptyAtFirst" classname="VenueTest" time="0.012"/>
   <testcase name="delete_deletesVenueFromDatabase_true" classname="VenueTest" time="0.022"/>
   <testcase name="Review_instantiatesCorrectly_true" classname="VenueTest" time="0.007"/>
   <testcase name="save_VenueIsSavedWithAnId_int" classname="VenueTest" time="0.016"/>

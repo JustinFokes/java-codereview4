@@ -110,5 +110,28 @@ public class App {
       response.redirect("/venue/" + newVenue.getId());
       return null;
       });
-  	}
+
+    post("/band/:id/update", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band newBand = Band.find(Integer.parseInt(request.params(":id")));
+      String newName = request.queryParams("newName");
+      String newGenre = request.queryParams("newGenre");
+      String newHomeTown = request.queryParams("newHomeTown");
+      newBand.update(newName, newGenre, newHomeTown);
+      model.put("thisBand", newBand);
+      model.put("bands", Band.all());
+      model.put("venues", Venue.all());
+      response.redirect("/band/" + newBand.getId());
+      return null;
+      });
+
+     get("/band/:id/delete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band newBand = Band.find(Integer.parseInt(request.params(":id")));
+      newBand.delete();
+      response.redirect("/bands");
+      model.put("template", "templates/bands.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+  }
 }
