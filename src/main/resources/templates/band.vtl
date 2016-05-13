@@ -1,1 +1,16 @@
 $thisBand.getName()
+
+<hr>
+
+Add a Venue To This Band!
+
+<form action="/" method="post">
+<select>
+#foreach($v in $venues)
+	<option value="$v.getId()">$v.getName()</option>
+#end
+</select>
+<input class="button-primary" type="submit" value="Add Venue"></input>
+</form>
+
+

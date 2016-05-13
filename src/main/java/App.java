@@ -68,6 +68,7 @@ public class App {
       Band newBand = Band.find(Integer.parseInt(request.params(":id")));
       model.put("thisBand", newBand);
       model.put("bands", Band.all());
+      model.put("venues", Venue.all());
       model.put("template", "templates/band.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -76,6 +77,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Venue newVenue = Venue.find(Integer.parseInt(request.params(":id")));
       model.put("thisVenue", newVenue);
+      model.put("bands", Band.all());
       model.put("template", "templates/venue.vtl");
       model.put("venues", Venue.all());
       return new ModelAndView(model, layout);
