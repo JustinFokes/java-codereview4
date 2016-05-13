@@ -34,7 +34,7 @@ public class App {
       newBand.save();
       model.put("band", newBand);
       model.put("bands", Band.all());
-      response.redirect("/bands/" + newBand.getId());
+      response.redirect("/band/" + newBand.getId());
       return null;
       });
 
@@ -45,7 +45,7 @@ public class App {
       newVenue.save();
       model.put("venue", newVenue);
       model.put("venues", Venue.all());
-      response.redirect("/venues/" + newVenue.getId());
+      response.redirect("/venue/" + newVenue.getId());
       return null;
       });
 
