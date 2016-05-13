@@ -1,6 +1,6 @@
-$thisBand.getName()
-	<li>$thisBand.getGenre()</li>
-	<li>$thisBand.getHomeTown()</li>
+<h3>$thisBand.getName()</h3>
+	Genre: <li>$thisBand.getGenre()</li>
+	Home-Town: <li>$thisBand.getHomeTown()</li>
 
 <hr>
 
@@ -19,17 +19,13 @@ Add a Venue To This Band!
 </form>
 
 <hr>
-Venues This Band is Playing At!
+<h3>Check out some of the awesome venues $thisBand.getName() have played at:</h3>
 
 #foreach($v in $thisBand.getVenue())
 
-<a href="/venue/$v.getId()">$v.getName()</a>
+<li><a href="/venue/$v.getId()">$v.getName()</a></li>
 
 #end
-
-<hr>
-<a href="/">Home</a>
-<hr>
 
 <hr>
 <h3>Update Band Information</h4>
@@ -51,4 +47,7 @@ Venues This Band is Playing At!
 	<h3>Delete This Band From The Database</h3>
 	<a href="/band/$thisBand.getId()/delete"><input class="button-primary" type="submit" value="Delete"></input></a>
 <hr>
+<a href="/">Home</a>
+<hr>
+
 

@@ -39,3 +39,7 @@
 #index-container {
   margin: 20%;
 }
+
+h5, h4, h3, h2, h1{
+  font-family: 'Slabo 27px', serif;
+}

@@ -1,6 +1,6 @@
-$thisVenue.getName()
-	<li>$thisVenue.getPhone()</li>
-	<li>$thisVenue.getLocation()</li>
+<h3>$thisVenue.getName()</h3>
+	Phone-Number: <li>$thisVenue.getPhone()</li>
+	Venue-Location: <li>$thisVenue.getLocation()</li>
 
 <hr>
 
@@ -19,11 +19,11 @@ Add a Band To This Venue!
 </form>
 
 <hr>
-Bands Playing At This Venue!
+<h3>Check out some noticeable bands who have played at the $thisVenue.getName():</h3>
 
 #foreach($b in $thisVenue.getBand())
 
-<a href="/band/$b.getId()">$b.getName()</a>
+<li><a href="/band/$b.getId()">$b.getName()</a></li>
 
 #end
 
