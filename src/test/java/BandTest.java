@@ -44,7 +44,6 @@ public class BandTest {
     Band myBand = new Band("Fugazi");
     myBand.save();
     Band savedBand = Band.find(myBand.getId());
-    assertTrue(myBand.equals(savedBand.getId()));
+    assertTrue(myBand.equals(savedBand));
   }
-
 }
