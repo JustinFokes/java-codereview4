@@ -55,8 +55,8 @@ public class Venue {
       String sql = "INSERT INTO venues(name, phone, location) VALUES (:name, :phone, :location)";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
-      .addParameter("phone", this.name)
-      .addParameter("location", this.name)
+      .addParameter("phone", this.phone)
+      .addParameter("location", this.location)
       .executeUpdate()
       .getKey();
     }

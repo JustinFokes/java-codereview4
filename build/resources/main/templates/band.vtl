@@ -1,4 +1,6 @@
 $thisBand.getName()
+	<li>$thisBand.getGenre()</li>
+	<li>$thisBand.getHomeTown()</li>
 
 <hr>
 
@@ -21,7 +23,7 @@ Venues This Band is Playing At!
 
 #foreach($v in $thisBand.getVenue())
 
-$v.getName()
+<a href="/venue/$v.getId()">$v.getName()</a>
 
 #end
 
