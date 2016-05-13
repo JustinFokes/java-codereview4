@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BandTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2016-05-13T22:01:17" hostname="Justins-MacBook-Pro.local" time="0.343">
+<testsuite name="BandTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2016-05-13T22:50:11" hostname="Justins-MacBook-Pro.local" time="0.172">
   <properties/>
-  <testcase name="save_bandIsSavedWithAnId_true" classname="BandTest" time="0.169"/>
-  <testcase name="equals_returnsTrueIRecipesAretheSame" classname="BandTest" time="0.009"/>
-  <testcase name="methods_getsAllInfo_true" classname="BandTest" time="0.011"/>
-  <testcase name="all_emptyAtFirst" classname="BandTest" time="0.013"/>
-  <testcase name="addVenue_addsVenueToBand_true" classname="BandTest" time="0.041"/>
-  <testcase name="find_bandIsFoundWithId_true" classname="BandTest" time="0.024"/>
-  <testcase name="delete_deletesBandFromDatabase_true" classname="BandTest" time="0.039"/>
-  <testcase name="Recipe_instantiatesCorrectly_true" classname="BandTest" time="0.008"/>
-  <testcase name="update_updatesTaskDescription_true" classname="BandTest" time="0.027"/>
+  <testcase name="save_bandIsSavedWithAnId_true" classname="BandTest" time="0.031"/>
+  <testcase name="equals_returnsTrueIRecipesAretheSame" classname="BandTest" time="0.01"/>
+  <testcase name="methods_getsAllInfo_true" classname="BandTest" time="0.01"/>
+  <testcase name="all_emptyAtFirst" classname="BandTest" time="0.011"/>
+  <testcase name="addVenue_addsVenueToBand_true" classname="BandTest" time="0.033"/>
+  <testcase name="find_bandIsFoundWithId_true" classname="BandTest" time="0.016"/>
+  <testcase name="delete_deletesBandFromDatabase_true" classname="BandTest" time="0.024"/>
+  <testcase name="Recipe_instantiatesCorrectly_true" classname="BandTest" time="0.009"/>
+  <testcase name="update_updatesTaskDescription_true" classname="BandTest" time="0.026"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
