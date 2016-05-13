@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BandTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-13T03:51:53" hostname="Justins-MacBook-Pro.local" time="0.327">
+<testsuite name="BandTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-13T05:46:09" hostname="Justins-MacBook-Pro.local" time="0.28">
   <properties/>
-  <testcase name="save_bandIsSavedWithAnId_true" classname="BandTest" time="0.207"/>
+  <testcase name="save_bandIsSavedWithAnId_true" classname="BandTest" time="0.184"/>
   <testcase name="equals_returnsTrueIRecipesAretheSame" classname="BandTest" time="0.007"/>
-  <testcase name="methods_getsAllInfo_true" classname="BandTest" time="0.007"/>
-  <testcase name="all_emptyAtFirst" classname="BandTest" time="0.012"/>
-  <testcase name="addVenue_addsVenueToBand_true" classname="BandTest" time="0.064"/>
-  <testcase name="find_bandIsFoundWithId_true" classname="BandTest" time="0.019"/>
+  <testcase name="methods_getsAllInfo_true" classname="BandTest" time="0.009"/>
+  <testcase name="all_emptyAtFirst" classname="BandTest" time="0.013"/>
+  <testcase name="addVenue_addsVenueToBand_true" classname="BandTest" time="0.04"/>
+  <testcase name="find_bandIsFoundWithId_true" classname="BandTest" time="0.017"/>
   <testcase name="Recipe_instantiatesCorrectly_true" classname="BandTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
