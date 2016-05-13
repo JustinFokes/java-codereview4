@@ -18,4 +18,34 @@ public class VenueTest {
     Venue newVenue = new Venue("Crystal Ball-Room");
     assertEquals("Crystal Ball-Room", newVenue.getName());
   }
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Venue.all().size(), 0);
+  }
+
+  @Test
+  public void equals_returnsTrueIRecipesAretheSame() {
+    Venue newVenue = new Venue("Crystal Ball-Room");
+    Venue newVenueTwo = new Venue("Crystal Ball-Room");
+    assertTrue(newVenue.equals(newVenueTwo));
+  }
+
+  @Test
+  public void save_VenueIsSavedWithAnId_int() {
+    Venue newVenue = new Venue("Crystal Ball-Room");
+    newVenue.save();
+    Venue savedVenue = Venue.all().get(0);
+    assertEquals(newVenue.getId(), savedVenue.getId());
+  }
+
+  @Test
+  public void find_VenueIsFoundById_true() {
+    Venue newVenue = new Venue("Crystal Ball-Room");
+    newVenue.save();
+    Venue savedVenue = Venue.find(newVenue.getId());
+    assertTrue(newVenue.equals(savedVenue));
+
+  }
+
 }

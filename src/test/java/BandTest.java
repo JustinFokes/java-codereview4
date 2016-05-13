@@ -18,4 +18,33 @@ public class BandTest {
     Band myBand = new Band("Fugazi");
     assertEquals("Fugazi", myBand.getName());
   }
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Band.all().size(), 0);
+  }
+
+  @Test
+  public void equals_returnsTrueIRecipesAretheSame() {
+    Band myBand = new Band("Fugazi");
+    Band myBandTwo = new Band("Fugazi");
+    assertTrue(myBand.equals(myBandTwo));
+  }
+
+  @Test
+  public void save_bandIsSavedWithAnId_true() {
+    Band myBand = new Band("Fugazi");
+    myBand.save();
+    Band savedBand = Band.all().get(0);
+    assertEquals(myBand.getId(), savedBand.getId());
+  }
+
+  @Test
+  public void find_bandIsFoundWithId_true() {
+    Band myBand = new Band("Fugazi");
+    myBand.save();
+    Band savedBand = Band.find(myBand.getId());
+    assertTrue(myBand.equals(savedBand.getId()));
+  }
+
 }
