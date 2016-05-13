@@ -74,7 +74,9 @@ public class App {
 
     get("/venue/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/venues.vtl");
+      Venue newVenue = Venue.find(Integer.parseInt(request.params(":id")));
+      model.put("thisVenue", newVenue);
+      model.put("template", "templates/venue.vtl");
       model.put("venues", Venue.all());
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
