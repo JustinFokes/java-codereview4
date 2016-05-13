@@ -49,20 +49,6 @@ public class App {
       return null;
       });
 
-    get("/bands/:id", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/bands.vtl");
-      model.put("bands", Band.all());
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/venues/:id", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/venues.vtl");
-      model.put("venues", Venue.all());
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
     get("/bands", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/bands.vtl");
@@ -76,5 +62,24 @@ public class App {
       model.put("venues", Venue.all());
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get("/band/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band newBand = Band.find(Integer.parseInt(request.params(":id")));
+      model.put("thisBand", newBand);
+      model.put("bands", Band.all());
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/venue/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/venues.vtl");
+      model.put("venues", Venue.all());
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
+
   }
 }
