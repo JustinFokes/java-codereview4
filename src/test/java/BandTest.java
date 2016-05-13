@@ -46,4 +46,15 @@ public class BandTest {
     Band savedBand = Band.find(myBand.getId());
     assertTrue(myBand.equals(savedBand));
   }
+
+  @Test
+  public void addVenue_addsVenueToBand_true() {
+    Band myBand = new Band("Fugazi");
+    myBand.save();
+    Venue newVenue = new Venue("The Crystal Ball-Room");
+    newVenue.save();
+    myBand.addVenue(newVenue);
+    Venue savedVenue = myBand.getVenue().get(0);
+    assertTrue(newVenue.equals(savedVenue));
+  }
 }
