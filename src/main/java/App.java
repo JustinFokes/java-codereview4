@@ -30,7 +30,9 @@ public class App {
     post("/band/new", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String bandName = request.queryParams("name");
-      Band newBand = new Band(bandName);
+      String genre = request.queryParams("name");
+      String homeTown = request.queryParams("name");
+      Band newBand = new Band(bandName, genre, homeTown);
       newBand.save();
       model.put("band", newBand);
       model.put("bands", Band.all());
@@ -41,7 +43,9 @@ public class App {
     post("/venue/new", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String venueName = request.queryParams("name");
-      Venue newVenue = new Venue(venueName);
+      String phone = request.queryParams("name");
+      String location = request.queryParams("name");
+      Venue newVenue = new Venue(venueName, phone, location);
       newVenue.save();
       model.put("venue", newVenue);
       model.put("venues", Venue.all());

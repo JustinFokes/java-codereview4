@@ -9,14 +9,16 @@ public class BandTest {
 
   @Test
   public void Recipe_instantiatesCorrectly_true() {
-    Band myBand = new Band("Fugazi");
+    Band myBand = new Band("Fugazi", "Punk", "DC");
     assertEquals(true, myBand instanceof Band); 
   }
 
   @Test
   public void methods_getsAllInfo_true() {
-    Band myBand = new Band("Fugazi");
+    Band myBand = new Band("Fugazi", "Punk", "DC");
     assertEquals("Fugazi", myBand.getName());
+    assertEquals("Punk", myBand.getGenre());
+    assertEquals("DC", myBand.getHomeTown());
   }
 
   @Test
@@ -26,14 +28,14 @@ public class BandTest {
 
   @Test
   public void equals_returnsTrueIRecipesAretheSame() {
-    Band myBand = new Band("Fugazi");
-    Band myBandTwo = new Band("Fugazi");
+    Band myBand = new Band("Fugazi", "Punk", "DC");
+    Band myBandTwo = new Band("Fugazi", "Punk", "DC");
     assertTrue(myBand.equals(myBandTwo));
   }
 
   @Test
   public void save_bandIsSavedWithAnId_true() {
-    Band myBand = new Band("Fugazi");
+    Band myBand = new Band("Fugazi", "Punk", "DC");
     myBand.save();
     Band savedBand = Band.all().get(0);
     assertEquals(myBand.getId(), savedBand.getId());
@@ -41,7 +43,7 @@ public class BandTest {
 
   @Test
   public void find_bandIsFoundWithId_true() {
-    Band myBand = new Band("Fugazi");
+    Band myBand = new Band("Fugazi", "Punk", "DC");
     myBand.save();
     Band savedBand = Band.find(myBand.getId());
     assertTrue(myBand.equals(savedBand));
@@ -49,9 +51,9 @@ public class BandTest {
 
   @Test
   public void addVenue_addsVenueToBand_true() {
-    Band myBand = new Band("Fugazi");
+    Band myBand = new Band("Fugazi", "Punk", "DC");
     myBand.save();
-    Venue newVenue = new Venue("The Crystal Ball-Room");
+    Venue newVenue = new Venue("The Crystal Ball-Room", "253-448-1364", "NorthEast Portland");
     newVenue.save();
     myBand.addVenue(newVenue);
     Venue savedVenue = myBand.getVenue().get(0);

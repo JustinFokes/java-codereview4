@@ -6,14 +6,26 @@ import java.util.ArrayList;
 public class Venue {
   private int id;
   private String name;
+  private String phone;
+  private String location;
 
-  public Venue(String name) {
+  public Venue(String name, String phone, String location) {
     this.name = name;
+    this.phone = phone;
+    this.location = location;
 
   }
 
   public String getName() {
     return name;
+  }
+
+   public String getPhone() {
+    return phone;
+  }
+
+   public String getLocation() {
+    return location;
   }
 
   public int getId() {
@@ -40,9 +52,11 @@ public class Venue {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO venues(name) VALUES (:name)";
+      String sql = "INSERT INTO venues(name, phone, location) VALUES (:name, :phone, :location)";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
+      .addParameter("phone", this.name)
+      .addParameter("location", this.name)
       .executeUpdate()
       .getKey();
     }

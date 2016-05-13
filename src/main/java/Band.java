@@ -6,13 +6,25 @@ import java.util.ArrayList;
 public class Band {
   private int id;
   private String name;
+  private String genre;
+  private String homeTown;
 
-  public Band(String name) {
+  public Band(String name, String genre, String homeTown) {
     this.name = name;
+    this.genre = genre;
+    this.homeTown = homeTown;
   }
 
   public String getName() {
     return name;
+  }
+
+  public String getGenre() {
+    return genre;
+  }
+
+  public String getHomeTown() {
+    return homeTown;
   }
 
   public int getId() {
@@ -39,9 +51,11 @@ public class Band {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO bands(name) VALUES (:name)";
+      String sql = "INSERT INTO bands(name, genre, homeTown) VALUES (:name, :genre, :homeTown)";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
+      .addParameter("genre", this.genre)
+      .addParameter("homeTown", this.homeTown)
       .executeUpdate()
       .getKey();
     }
