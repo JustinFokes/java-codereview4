@@ -23,7 +23,7 @@ Bands Playing At This Venue!
 
 #foreach($b in $thisVenue.getBand())
 
-$b.getName()
+<a href="/band/$b.getId()">$b.getName()</a>
 
 #end
 

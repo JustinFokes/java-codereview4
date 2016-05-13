@@ -60,4 +60,12 @@ public class VenueTest {
     Band savedBand = newVenue.getBand().get(0);
     assertTrue(myBand.equals(savedBand));
   }
+
+  @Test
+  public void delete_deletesVenueFromDatabase_true() {
+    Venue newVenue = new Venue("Crystal Ball-Room", "253-448-1364", "NorthEast Portland");
+    newVenue.save();
+    newVenue.delete();
+    assertEquals(0, Venue.all().size());
+  }
 }

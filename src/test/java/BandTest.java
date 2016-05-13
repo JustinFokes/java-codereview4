@@ -59,4 +59,22 @@ public class BandTest {
     Venue savedVenue = myBand.getVenue().get(0);
     assertTrue(newVenue.equals(savedVenue));
   }
+
+  @Test
+  public void delete_deletesBandFromDatabase_true() {
+    Band myBand = new Band("Fugazi", "Punk", "DC");
+    myBand.save();
+    Venue newVenue = new Venue("The Crystal Ball-Room", "253-448-1364", "NorthEast Portland");
+    myBand.delete();
+    assertEquals(0, Band.all().size());
+  }
+
+  @Test
+  public void update_updatesTaskDescription_true() {
+    Band myBand = new Band("Fugazi", "Punk", "DC");
+    myBand.save();
+    myBand.update("Jim", "Pop", "Seattle");
+    assertEquals("Jill", Band.find(myBand.getId()).getName());
+  }
+
 }

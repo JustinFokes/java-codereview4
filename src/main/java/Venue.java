@@ -101,4 +101,13 @@ public class Venue {
       return bands;
     }
   }
+
+  public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+    String deleteQuery = "DELETE FROM venues WHERE id = :id";
+      con.createQuery(deleteQuery)
+        .addParameter("id", this.getId())
+        .executeUpdate();
+    }
+  }
 }

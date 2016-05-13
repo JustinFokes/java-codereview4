@@ -100,4 +100,34 @@ public class Band {
       return venues;
     }
   }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteQuery = "DELETE FROM bands WHERE id = :id";
+        con.createQuery(deleteQuery)
+          .addParameter("id", this.getId())
+          .executeUpdate();
+      }
+    }
+  public void update(String name, String genre, String homeTown) {
+    try(Connection con = DB.sql2o.open()){
+      String sql = "UPDATE bands SET name = :name WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("name", name)
+      .addParameter("id", this.id)
+      .executeUpdate();
+
+      String sql1 = "UPDATE bands SET genre = :genre WHERE id = :id";
+      con.createQuery(sql1)
+      .addParameter("genre", genre)
+      .addParameter("id", this.id)
+      .executeUpdate();
+
+      String sql2 = "UPDATE bands SET homeTown = :homeTown WHERE id = :id";
+      con.createQuery(sql2)
+      .addParameter("homeTown", homeTown)
+      .addParameter("id", this.id)
+      .executeUpdate();
+    }
+  }
 }
