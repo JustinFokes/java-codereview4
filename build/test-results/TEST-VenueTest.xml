@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="VenueTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-13T05:46:10" hostname="Justins-MacBook-Pro.local" time="0.122">
+<testsuite name="VenueTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-13T15:05:02" hostname="Justins-MacBook-Pro.local" time="0.102">
   <properties/>
-  <testcase name="find_VenueIsFoundById_true" classname="VenueTest" time="0.029"/>
-  <testcase name="equals_returnsTrueIRecipesAretheSame" classname="VenueTest" time="0.009"/>
-  <testcase name="addBand_addsBandToVenue_true" classname="VenueTest" time="0.034"/>
+  <testcase name="find_VenueIsFoundById_true" classname="VenueTest" time="0.016"/>
+  <testcase name="equals_returnsTrueIRecipesAretheSame" classname="VenueTest" time="0.005"/>
+  <testcase name="addBand_addsBandToVenue_true" classname="VenueTest" time="0.032"/>
   <testcase name="methods_getsAllInfo_true" classname="VenueTest" time="0.007"/>
-  <testcase name="all_emptyAtFirst" classname="VenueTest" time="0.011"/>
+  <testcase name="all_emptyAtFirst" classname="VenueTest" time="0.012"/>
   <testcase name="Review_instantiatesCorrectly_true" classname="VenueTest" time="0.007"/>
   <testcase name="save_VenueIsSavedWithAnId_int" classname="VenueTest" time="0.02"/>
   <system-out><![CDATA[]]></system-out>

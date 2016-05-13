@@ -12,58 +12,30 @@
 }
 
 
-.brazil:hover{
-  background: url("/brazil.png") center no-repeat;
+.add-band:hover{
+  background: url("/band1.jpeg") center no-repeat;
   color: transparent;
 }
 
 
-.american:hover{
-  background:url("/america.jpeg") center no-repeat;
+.show-band:hover{
+  background:url("/band2.jpeg") center no-repeat;
   color: transparent;
 }
 
 
 
-.mexican:hover{
-  background:url("/mexican.png") center no-repeat;
+.add-venue:hover{
+  background:url("/venue1.jpeg") center no-repeat;
   color: transparent;
 }
 
 
-.ethiopian:hover{
-  background:url("/ethiopian.png") center no-repeat;
+.show-venue:hover{
+  background:url("/venue2.jpeg") center no-repeat;
   color: transparent;
 }
 
-
-.japanese:hover{
-  background:url("/japan.jpeg") center no-repeat;
-  color: transparent;
-}
-
-
-.british:hover{
-  background:url("/british.png") center no-repeat;
-  color: transparent;
-}
-
-
-.italian:hover{
-  background:url("/italy.gif") center no-repeat;
-  color: transparent;
-}
-
-
-.indian:hover{
-  background:url("/indian.png") center no-repeat;
-  color: transparent;
-}
-
-.login{
-  float: right;
-}
-
-h1{
-  padding-top: 5%;
+#index-container {
+  margin: 20%;
 }
