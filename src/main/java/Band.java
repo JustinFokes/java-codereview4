@@ -7,7 +7,7 @@ public class Band {
   private int id;
   private String name;
 
-  public Recipe(String name) {
+  public Band(String name) {
     this.name = name;
   }
 

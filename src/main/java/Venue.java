@@ -7,8 +7,8 @@ public class Venue {
   private int id;
   private String name;
 
-  public Venue(String user_review) {
-    this.user_review = user_review;
+  public Venue(String name) {
+    this.name = name;
 
   }
 
