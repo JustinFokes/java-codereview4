@@ -95,14 +95,16 @@ public class App {
       return null;
       });
 
-    // post("/venue/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   Venue newVenue = Venue.find(Integer.parseInt(request.params(":id")));
-    //   model.put("thisVenue", newVenue);
-    //   model.put("bands", Band.all());
-    //   model.put("venues", Venue.all());
-    //   //response.redirect("/venues/" + newVenue.getId());
-    //   return null;
-    //   });
+    post("/venue/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Venue newVenue = Venue.find(Integer.parseInt(request.params(":id")));
+      Band thisBand = Band.find(Integer.parseInt(request.queryParams("addedBand")));
+      newVenue.addBand(thisBand);
+      model.put("thisVenue", newVenue.getName());
+      model.put("bands", Band.all());
+      model.put("venues", Venue.all());
+      response.redirect("/venue/" + newVenue.getId());
+      return null;
+      });
   	}
 }
