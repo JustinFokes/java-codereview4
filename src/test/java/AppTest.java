@@ -61,13 +61,13 @@ public class AppTest extends FluentTest {
     submit(".button-primary");
     click("a", withText("Home"));
     click("a", withText("Add Venues"));
-    fill("#name").with("This");
+    fill("#name").with("Another");
     fill("#phone").with("111-222-3333");
     fill("#location").with("Portland");
     submit(".button-primary");
     click("a", withText("Home"));
     click("a", withText("View Venues"));
-    click("a", withText("This"));
+    click("a", withText("Another"));
     fillSelect("addedBand").withText("Fugazi");
     click("a", withText("Add Band"));
     assertThat(pageSource()).contains("Fugazi");
