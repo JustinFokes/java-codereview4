@@ -1,15 +1,13 @@
+import org.sql2o.*;
+import org.junit.*;
 import org.fluentlenium.adapter.FluentTest;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import spark.ModelAndView;
-import static org.fluentlenium.core.filter.FilterConstructor.*;
-
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.fluentlenium.core.filter.FilterConstructor.*;
+import static org.junit.Assert.*;
 
 public class AppTest extends FluentTest {
   public WebDriver webDriver = new HtmlUnitDriver();
@@ -21,6 +19,10 @@ public class AppTest extends FluentTest {
 
   @ClassRule
   public static ServerRule server = new ServerRule();
+
+
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
 
 
   @Test
@@ -61,16 +63,15 @@ public class AppTest extends FluentTest {
     submit(".button-primary");
     click("a", withText("Home"));
     click("a", withText("Add Venues"));
-    fill("#name").with("Another");
+    fill("#name").with("Try");
     fill("#phone").with("111-222-3333");
     fill("#location").with("Portland");
     submit(".button-primary");
     click("a", withText("Home"));
     click("a", withText("View Venues"));
-    click("a", withText("Another"));
-    fillSelect("addedBand").withText("Fugazi");
-    click("a", withText("Add Band"));
+    click("a", withText("Try"));
+    fillSelect("#addedBand").withText("Fugazi");
+    submit(".button-primary", withText("ADD BAND"));
     assertThat(pageSource()).contains("Fugazi");
-
   }
 }
