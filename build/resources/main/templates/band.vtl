@@ -1,0 +1,53 @@
+<h3>$thisBand.getName()</h3>
+	Genre: <li>$thisBand.getGenre()</li>
+	Home-Town: <li>$thisBand.getHomeTown()</li>
+
+<hr>
+
+Add a Venue To This Band!
+
+<form action="/band/$thisBand.getId()" method="post">
+
+<select name="addedVenue">
+#foreach($v in $venues)
+	<option value="$v.getId()">$v.getName()</option>
+#end
+</select>
+
+<input class="button-primary" type="submit" value="Add Venue"></input>
+
+</form>
+
+<hr>
+<h3>Check out some of the awesome venues $thisBand.getName() have played at:</h3>
+
+#foreach($v in $thisBand.getVenue())
+
+<li><a href="/venue/$v.getId()">$v.getName()</a></li>
+
+#end
+
+<hr>
+<h3>Update Band Information</h4>
+
+<form method="post" action="/band/$thisBand.getId()/update">
+	<div class="row">
+	  <div class="six columns">
+	    <label for="name">Name</label>
+	    <input class="u-full-width" type="text" placeholder="newName" name="newName" id="newName" required></input>
+	    <input class="u-full-width" type="text" placeholder="newGenre" name="newGenre" id="newGenre" required></input>
+	    <input class="u-full-width" type="text" placeholder="new home town" name="newHomeTown" id="newHomeTown" required></input>
+	    <input class="button-primary" type="submit" value="Submit"></input>
+	  </div>
+	</div>
+</form>
+
+
+<hr>
+	<h3>Delete This Band From The Database</h3>
+	<a href="/band/$thisBand.getId()/delete"><input class="button-primary" type="submit" value="Delete"></input></a>
+<hr>
+<a href="/">Home</a>
+<hr>
+
+
